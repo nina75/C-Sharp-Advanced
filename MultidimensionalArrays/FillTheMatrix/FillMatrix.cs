@@ -18,6 +18,7 @@ class FillMatrix
                 PrintMatrixC(n);
                 break;
             case "d":
+                PrintMatrixD(n);
                 break;
         }
     }
@@ -112,6 +113,63 @@ class FillMatrix
             }
             Console.WriteLine(String.Join(" ", row));
         }
+    }
+
+    static void PrintMatrixD(int len)
+    {
+        int[,] matrix = new int[len, len];
+        string direction = "down";
+        int currentRow = 0;
+        int currentCol = 0;
+        for (int i = 0; i < len * len; i++)
+        {
+            if (direction == "down" && (currentRow == len || matrix[currentRow, currentCol] != 0))
+            {
+                currentCol++;
+                currentRow--;
+                direction = "right";
+            }
+            if (direction == "right" && (currentCol == len || matrix[currentRow, currentCol] != 0))
+            {
+                currentCol--;
+                currentRow--;
+                direction = "up";
+            }
+            if (direction == "up" && (currentRow < 0 || matrix[currentRow, currentCol] != 0))
+            {
+                currentCol--;
+                currentRow++;
+                direction = "left";
+            }
+            if (direction == "left" && (currentCol < 0 || matrix[currentRow, currentCol] != 0))
+            {
+                currentCol++;
+                currentRow++;
+                direction = "down";
+            }
+
+            matrix[currentRow, currentCol] = i + 1;
+
+            if (direction == "down")
+            {
+                currentRow++;
+            }
+            else if (direction == "right")
+            {
+                currentCol++;
+            }
+            else if (direction == "up")
+            {
+                currentRow--;
+            }
+
+            else if (direction == "left")
+            {
+                currentCol--;
+            }
+
+        }
+        PrintMatrix(matrix);
     }
 
 }
