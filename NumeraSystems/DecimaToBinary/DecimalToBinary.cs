@@ -7,7 +7,12 @@ class DecimalToBinary
     static void Main()
     {
         long number = long.Parse(Console.ReadLine()); //19
-        var bits = new List<long>();  
+        Console.WriteLine(ConvertDecimalToBinary(number));
+    }
+
+    static string ConvertDecimalToBinary(long number)
+    {
+        var bits = new List<long>();
         while (number > 0)
         {
             bits.Add(number % 2);
@@ -16,7 +21,6 @@ class DecimalToBinary
 
         long[] bitsArray = bits.ToArray();
         Array.Reverse(bitsArray);
-        Console.WriteLine(String.Join("", bitsArray));
-        
+        return String.Join("", bitsArray);
     }
 }
