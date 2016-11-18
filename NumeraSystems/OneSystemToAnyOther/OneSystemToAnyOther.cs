@@ -94,6 +94,6 @@ class OneSystemToAnyOther
 
         string result = ConvertBaseSToBaseD(number, s, d);
         //Console.WriteLine("Number is base {0, 2}: {1}", d, result);
-        Console.WriteLine(result);
+        Console.WriteLine(result.TrimStart('0'));
     }
 }
